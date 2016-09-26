@@ -62,15 +62,15 @@ class TasksController < ApplicationController
   end
 
 def search
-  @search_value = params["search"]["name"]
-  @search_user = params["search"]["user"]
-  @search_category = params["search"]["category"]
+  @search_value = params['search']['name']
+  @search_user = params['search']['user']
+  @search_category = params['search']['category']
   @tasks = Task.where("name like '%#{@search_value}%'")
   if @search_user.present?
     @tasks = @tasks.where(user_id: @search_user)
   end
   if @search_category.present?
-    @tasks = @tasks = tasks.where(category_id @search_categorty)
+    @tasks = @tasks = tasks.where(category_id: @search_category)
   end
   render :index
 end
@@ -85,4 +85,5 @@ end
     def task_params
       params.require(:task).permit(:due_date, :category_id, :name, :done, :user_id)
     end
+
 end
