@@ -1,4 +1,10 @@
-﻿<p id="notice"><%= notice %></p>
+﻿<br>
+<%= form_tag(:action=>'search') do %>
+  <%= text_field_tag "search[categoryname]", @search_value %>
+  <%= submit_tag "検索" %>
+  <%= link_to "リセット", users_path %>
+<% end %>
+<br><p id="notice"><%= notice %></p>
 <font size="3" color="black"><%= link_to 'カテゴリー登録', new_category_path %><br>
 <br>
 <font size="5" color="black">カテゴリー一覧</font>

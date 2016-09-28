@@ -32,7 +32,13 @@
           <font color="blue">終了</font>
         <% end %>
         </td>
-        <td><%= task.due_date %></td>
+        <td>
+        <% if task.due_date < Date.today && task.done == true %>
+            <font color="red"><%= task.due_date %></font>
+        <% else %>
+            <font color="black"><%= task.due_date %></font>
+        <% end %>
+        </td>
         <td><%= task.name %></td>
         <td><%= task.category.categoryname %></td>
         <td><%= task.user.username %></td>
